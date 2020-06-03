@@ -1,0 +1,36 @@
+{
+  "message": "hello i18n !!",
+  "header": {
+    "home": "Home",
+    "service": "Service",
+    "scheduling": "Scheduling",
+    "about": "About us",
+    "profile": "My profile",
+
+    "training": "Workout",
+    "nutritionist": "Nutritionist",
+    "massage": "Massage"
+  },
+  "home": {
+    "name": "Fitness center Bucerias",
+    "intro": "At Fitness Center Bucerías you will find that staying fit and developing your skills at the gym is easier than ever. Our commitment is to promote a healthy lifestyle in a comfortable and exclusive environment, with the most modern gym equipment and complete facilities. From now on, staying in shape will be simple, fun and hassle-free."
+  },
+  "workout": {
+    "yoga": {
+      "name": "",
+      "description": ""
+    },
+    "pilates": {
+      "name": "",
+      "description": ""
+    },
+    "core": {
+      "name": "",
+      "description": "Core workout"
+    },
+    "cardio": {
+      "name": "",
+      "description": ""
+    }
+  }
+}
