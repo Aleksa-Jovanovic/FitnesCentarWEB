@@ -44,7 +44,7 @@ function workout() {
     {
       id: 4,
       type: "pilates",
-      name: "",
+      name: "Classical Pilates",
       description: "",
       duration: 1000,
       difficulty: 3,
@@ -56,7 +56,7 @@ function workout() {
     {
       id: 5,
       type: "pilates",
-      name: "",
+      name: "Mat Pilates",
       description: "",
       duration: 900,
       difficulty: 3,
@@ -68,7 +68,7 @@ function workout() {
     {
       id: 6,
       type: "pilates",
-      name: "",
+      name: "Reformer Pilates",
       description: "",
       duration: 1200,
       difficulty: 2,
@@ -82,7 +82,7 @@ function workout() {
     {
       id: 7,
       type: "core",
-      name: "",
+      name: "Plank",
       description: "",
       duration: 1300,
       difficulty: 5,
@@ -94,7 +94,7 @@ function workout() {
     {
       id: 8,
       type: "core",
-      name: "",
+      name: "Dead Bug",
       description: "",
       duration: 300,
       difficulty: 3,
@@ -106,7 +106,7 @@ function workout() {
     {
       id: 9,
       type: "core",
-      name: "",
+      name: "Butterfly Sit-up",
       description: i18n.tc("workout.core.description"),
       duration: 1800,
       difficulty: 4,
@@ -120,7 +120,7 @@ function workout() {
     {
       id: 10,
       type: "cardio",
-      name: "",
+      name: "Boxing",
       description: "",
       duration: 900,
       difficulty: 3,
@@ -132,7 +132,7 @@ function workout() {
     {
       id: 11,
       type: "cardio",
-      name: "",
+      name: "Swimming",
       description: "",
       duration: 900,
       difficulty: 4,
@@ -144,7 +144,7 @@ function workout() {
     {
       id: 12,
       type: "cardio",
-      name: "",
+      name: "Cycling",
       description: "",
       duration: 900,
       difficulty: 5,

@@ -6,16 +6,16 @@
 
     <!--LargeMenu-->
     <div class="large-menu">
-      <router-link to="/">
+      <router-link to="/" class="nav-link-hover">
         <i class="fas fa-home"></i>
         {{ $t("header.home") }}
       </router-link>
 
       <!--Service-->
       <div class="dropdown">
-        <router-link to="/service">{{ $t("header.service") }}</router-link>
+        <router-link to="/service" class="nav-link-hover">{{ $t("header.service") }}</router-link>
         <div class="dropdown-menu dropdown-component">
-          <router-link to="/service/training" class="dropdown-item link-item">
+          <router-link to="/service/training" class="dropdown-item link-item nav-link-hover">
             {{
             $t("header.training")
             }}
@@ -24,11 +24,11 @@
 
           <router-link
             to="/service/nutritionist"
-            class="dropdown-item link-item"
+            class="dropdown-item link-item nav-link-hover"
           >{{ $t("header.nutritionist") }}</router-link>
           <div class="dropdown-divider"></div>
 
-          <router-link to="/service/massage" class="dropdown-item link-item">
+          <router-link to="/service/massage" class="dropdown-item link-item nav-link-hover">
             {{
             $t("header.massage")
             }}
@@ -37,29 +37,10 @@
       </div>
       <!--/Service-->
 
-      <router-link to="/scheduling">{{ $t("header.scheduling") }}</router-link>
-      <router-link to="/about">{{ $t("header.about") }}</router-link>
-      <router-link to="/profile">{{ $t("header.profile") }}</router-link>
+      <router-link to="/scheduling" class="nav-link-hover">{{ $t("header.scheduling") }}</router-link>
+      <router-link to="/about" class="nav-link-hover">{{ $t("header.about") }}</router-link>
+      <router-link to="/profile" class="nav-link-hover">{{ $t("header.profile") }}</router-link>
 
-      <!--Language--
-      <div class="dropdown">
-        <button
-          class="btn"
-          type="menu"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <i id="language" class="fas fa-language"></i>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <p class="dropdown-item language-item">SR</p>
-          <div class="dropdown-divider"></div>
-          <p class="dropdown-item language-item">EN</p>
-        </div>
-      </div>
-      --/Language-->
       <Language />
     </div>
     <!--/LargeMenu-->
@@ -171,6 +152,7 @@ export default {
 a:hover.link-item {
   background: var(--var-navy) !important;
 }
+
 #nav a,
 p {
   font-weight: normal;
@@ -178,25 +160,16 @@ p {
   color: var(--var-yellow);
   margin-right: 1.5rem;
 }
+
+.nav-link-hover:hover {
+  text-decoration: none !important;
+  font-weight: bold !important;
+}
+
 #nav a.router-link-exact-active {
   color: var(--var-red);
   background: var(--var-navy) !important;
 }
-
-/*.language-item {
-  font-weight: bold !important;
-  color: var(--var-navy) !important;
-  margin: 0 !important;
-  padding-left: 30% !important;
-  cursor: pointer;
-}
-#language {
-  position: relative;
-  display: inline-block;
-  margin-left: 1rem;
-  font-size: 50px;
-  color: var(--var-yellow);
-}*/
 
 @media (max-width: 1100px) {
   #nav a {

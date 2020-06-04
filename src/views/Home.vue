@@ -16,6 +16,15 @@
 
     <div class="container">
       <p>{{$t("home.intro")}}</p>
+
+      <h2>{{$t("home.bestWorkout")}}</h2>
+      <div class="home-workouts">
+        <WorkoutHomePage
+          v-for="bestWorkout in bestWorkouts"
+          :key="bestWorkout.id"
+          :workout="bestWorkout"
+        />
+      </div>
       <p id="test-p">{{workouts[0].description}}</p>
     </div>
   </div>
@@ -24,13 +33,17 @@
 <script>
 // @ is an alias to /src
 import workout from "@/data/workout.js";
+import WorkoutHomePage from "@/components/WorkoutHomePage.vue";
 
 export default {
   name: "Home",
-  components: {},
+  components: {
+    WorkoutHomePage
+  },
   data() {
     return {
-      workouts: null
+      workouts: null,
+      bestWorkouts: []
     };
   },
   created() {
@@ -38,7 +51,9 @@ export default {
     this.workouts.sort(function(a, b) {
       return b.rate - a.rate;
     });
-    window.console.log(this.workouts[0].rate);
+    this.bestWorkouts.push(this.workouts[0]);
+    this.bestWorkouts.push(this.workouts[1]);
+    this.bestWorkouts.push(this.workouts[2]);
   },
   mounted() {
     //this.workouts = workout;
