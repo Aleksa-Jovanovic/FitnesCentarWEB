@@ -20,6 +20,7 @@ export default {
   justify-content: center;
   background: var(--var-navy);
   color: var(--var-yellow);
+  z-index: 5;
 }
 
 .footer p {

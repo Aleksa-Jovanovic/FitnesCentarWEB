@@ -7,7 +7,7 @@
 </template>
 
 <style>
-@import "./assets/styles/variables.css";
+@import "./assets/styles/global.css";
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

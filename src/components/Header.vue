@@ -50,35 +50,35 @@
       <div class="dropdown">
         <i class="fas fa-bars"></i>
         <div class="dropdown-menu small-dropdown-component">
-          <router-link to="/" class="dropdown-item link-item">
+          <router-link to="/" class="dropdown-item link-item nav-link-hover">
             {{
             $t("header.home")
             }}
           </router-link>
           <div class="dropdown-divider"></div>
 
-          <router-link to="/service" class="dropdown-item link-item">
+          <router-link to="/service" class="dropdown-item link-item nav-link-hover">
             {{
             $t("header.service")
             }}
           </router-link>
           <div class="dropdown-divider"></div>
 
-          <router-link to="/scheduling" class="dropdown-item link-item">
+          <router-link to="/scheduling" class="dropdown-item link-item nav-link-hover">
             {{
             $t("header.scheduling")
             }}
           </router-link>
           <div class="dropdown-divider"></div>
 
-          <router-link to="/about" class="dropdown-item link-item">
+          <router-link to="/about" class="dropdown-item link-item nav-link-hover">
             {{
             $t("header.about")
             }}
           </router-link>
           <div class="dropdown-divider"></div>
 
-          <router-link to="/profile" class="dropdown-item link-item">
+          <router-link to="/profile" class="dropdown-item link-item nav-link-hover">
             {{
             $t("header.profile")
             }}
@@ -107,6 +107,7 @@ export default {
 
 <style>
 #nav {
+  user-select: none !important;
   position: fixed;
   display: flex;
   width: 100%;
@@ -115,6 +116,7 @@ export default {
   background: var(--var-navy);
   border-bottom: solid var(--var-yellow) 1px;
   border-left: solid var(--var-yellow) 7px;
+  z-index: 5;
 }
 
 .nav-brand {
@@ -162,7 +164,6 @@ p {
 }
 
 .nav-link-hover:hover {
-  text-decoration: none !important;
   font-weight: bold !important;
 }
 
@@ -171,19 +172,7 @@ p {
   background: var(--var-navy) !important;
 }
 
-@media (max-width: 1100px) {
-  #nav a {
-    font-weight: bold;
-    font-size: 16px;
-    color: var(--var-yellow);
-    margin-right: 1.5rem;
-  }
-  #language {
-    font-size: 30px;
-  }
-}
-
-@media (max-width: 835px) {
+@media (max-width: 900px) {
   #nav a {
     font-size: 24px;
   }
@@ -194,4 +183,16 @@ p {
     display: inline-block;
   }
 }
+
+/*@media (max-width: 835px) {
+  #nav a {
+    font-size: 24px;
+  }
+  .large-menu {
+    display: none;
+  }
+  .small-menu {
+    display: inline-block;
+  }
+}*/
 </style>

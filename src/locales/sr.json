@@ -14,7 +14,20 @@
   "home": {
     "name": "Fitnes centar Bucerias",
     "intro": "U Fitness centru Bucerias uvideccete da je odrzavanje kondicije i razvijanje vestina u teretani laksi nego ikad. Nase opredeljenje je da promovisemo zdrav način zivota u ugodnom i ekskluzivnom okruzenju, uz najsavremeniju teretanu i kompletnu opremu. Od sada, ostati u formi bice jednostavno, zabavno i bez problema.",
-    "bestWorkout": "Nasi najbolju treninzi:"
+    "bestWorkout": "Nasi najbolji treninzi:",
+    "workoutRating": "Ocena: ",
+    "goToWorkout": "Detaljnije o vezbi",
+    "path": "Pocetna"
+  },
+  "service": {
+    "name": "Usluge",
+    "path": "Usluge",
+    "inspiration": "Nas cilj je da vam pomognemo da postignete svoje ciljeve, vodeci racuna uvek o vasem blagostanju!",
+    "inspiration2": "Stoga Fitnes centar Bucerias ima sertifikovane i iskusne instruktore koji ce vam pomoci da identifikujete svoje licne ciljeve i osmislite rutinu u potpunosti prilagodjenu vasim potrebama u nasoj teretani.",
+    "offers": "Nase ponude: ",
+    "workoutOffer": "TRENING",
+    "nutritionistOffer": "NUTRICIONISTA",
+    "massageOffer": "MASAZA"
   },
   "workout": {
     "yoga": {

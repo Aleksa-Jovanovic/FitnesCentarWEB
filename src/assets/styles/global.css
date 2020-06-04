@@ -1,0 +1,28 @@
+:root {
+  --var-lemon-tonic: #fcf951ff;
+  --var-purple: #422057ff;
+  --var-red: #f65058ff;
+  --var-yellow: #fbde44ff;
+  --var-navy: #28334aff;
+}
+
+* {
+  font-family: "Titillium Web", sans-serif;
+}
+
+.current-path {
+  display: inline-block;
+  position: absolute;
+  left: 2%;
+  top: 100px;
+  z-index: 1;
+  background: var(--var-yellow);
+  color: var(--var-red);
+  border-radius: 4px;
+  padding: 3px;
+  font-size: 0.9rem;
+}
+
+a {
+  text-decoration: none !important;
+}

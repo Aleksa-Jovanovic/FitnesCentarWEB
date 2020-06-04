@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>{{$t("home.name")}}</h1>
-
+    <div class="current-path">{{$t('home.path')}}</div>
     <div class="home-pictures">
       <div class="home-picture">
         <img src="@/assets/img/home_gym.png" alt />
@@ -25,7 +25,6 @@
           :workout="bestWorkout"
         />
       </div>
-      <p id="test-p">{{workouts[0].description}}</p>
     </div>
   </div>
 </template>
@@ -64,6 +63,7 @@ export default {
 
 <style>
 .home {
+  position: relative;
   padding-top: 90px;
 }
 .home p {
@@ -93,5 +93,17 @@ export default {
 .home-picture img {
   width: 100%;
   height: 100%;
+}
+
+.home .container h2 {
+  font-size: 2.5rem;
+  padding: 5px;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .home h1 {
+    font-size: 3rem;
+  }
 }
 </style>
