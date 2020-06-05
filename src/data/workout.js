@@ -111,7 +111,12 @@ function workout() {
       duration: 1800,
       difficulty: 4,
       rate: 4.9,
-      comments: [],
+      comments: [
+        {
+          user: "admin",
+          text: "Odlican trening",
+        },
+      ],
       imgs: ["core_butterfly_1.jpg", "core_butterfly_2.jpg"],
       videos: [],
     },
