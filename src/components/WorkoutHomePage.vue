@@ -41,16 +41,32 @@
           <hr />
           <div class="rate-and-comment-modal-comment-top">
             <h3>Comments</h3>
-            <i class="fas fa-plus-circle"></i>
+            <i
+              class="fas fa-plus-circle"
+              @click="$modal.show('addCommentModal')"
+            ></i>
           </div>
           <div
             class="workout-modal-div-comment"
             v-for="comment in workout.comments"
-            :key="comment.text"
+            :key="comment.id"
           >
-            <p>comment.text</p>
+            <p>{{ comment.text }}</p>
+          </div>
+          <div class="workout-modal-div-comment">
+            <p>asdhkashd</p>
           </div>
         </div>
+      </div>
+    </modal>
+    <modal name="addCommentModal">
+      <div class="add-comment-modal">
+        <i
+          id="close-rateAndCommentModal"
+          class="fas fa-times-circle"
+          @click="$modal.hide('addCommentModal')"
+        ></i>
+        <input type="text" placeholder="Comment..." />
       </div>
     </modal>
   </div>
@@ -138,7 +154,8 @@ export default {
   cursor: pointer;
 }
 
-.rate-and-comment-modal {
+.rate-and-comment-modal,
+.add-comment-modal {
   display: flex;
   flex-direction: column;
 }
@@ -147,7 +164,8 @@ export default {
   font-weight: 600;
 }
 
-.rate-and-comment-modal i {
+.rate-and-comment-modal i,
+add-comment-modal i {
   cursor: pointer;
 }
 
@@ -182,6 +200,15 @@ export default {
 .rate-and-comment-modal-comment-top i:hover {
   color: var(--var-yellow);
   font-weight: bold;
+}
+
+.workout-modal-div-comment {
+  margin: 2% 10%;
+  width: 80%;
+  box-shadow: 3px 3px 5px 0px rgba(40, 51, 74, 1);
+}
+.workout-modal-div-comment p {
+  margin: 0px !important;
 }
 
 @media (max-width: 900px) {

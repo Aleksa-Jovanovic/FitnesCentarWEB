@@ -113,6 +113,12 @@ function workout() {
       rate: 4.9,
       comments: [
         {
+          id: 1,
+          user: "admin",
+          text: "Odlican trening",
+        },
+        {
+          id: 2,
           user: "admin",
           text: "Odlican trening",
         },
