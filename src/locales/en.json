@@ -29,6 +29,10 @@
     "nutritionistOffer": "NUTRITIONIST",
     "massageOffer": "MASSAGE"
   },
+  "profile": {
+    "name": "Profile",
+    "path": "Profile"
+  },
   "workout": {
     "rateCommentModal": {
       "rateUs": "Rate us:",

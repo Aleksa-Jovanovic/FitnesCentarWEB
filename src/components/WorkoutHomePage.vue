@@ -8,40 +8,41 @@
       <p>{{ workout.description }}</p>
 
       <div id="workout-home-page-text-bottom">
-        <router-link to="/" id="workout-home-page-details">{{
+        <router-link to="/" id="workout-home-page-details">
+          {{
           $t("home.goToWorkout")
-        }}</router-link>
+          }}
+        </router-link>
         <div
           class="workout-card-rateAndComment"
-          @click="openModal(`rateAndCommentModal${workout.id}`)"
+          @click="openModal(`rateAndCommentModal-${workout.id}`)"
         >
           <i class="fas fa-comment-alt"></i>
           /
           <i class="fas fa-star"></i>
         </div>
-        <span id="workout-home-page-rating"
-          >{{ $t("home.workoutRating") }}{{ workout.rate }}</span
-        >
+        <span id="workout-home-page-rating">{{ $t("home.workoutRating") }}{{ workout.rate }}</span>
       </div>
     </div>
-    <modal
-      :name="'rateAndCommentModal' + workout.id"
-      :height="750"
-      :pivotY="0.7"
-    >
-      <div class="rate-and-comment-modal">
+    <modal :name="'rateAndCommentModal-' + workout.id" :height="750" :pivotY="0.7">
+      <div
+        class="rate-and-comment-modal"
+        @mouseenter="loadModal(`rateAndCommentModal-${workout.id}`)"
+      >
         <i
           id="close-rateAndCommentModal"
           class="fas fa-times-circle"
-          @click="$modal.hide(`rateAndCommentModal${workout.id}`)"
+          @click="$modal.hide(`rateAndCommentModal-${workout.id}`)"
         ></i>
         <div>
           <h3>{{ $t("workout.rateCommentModal.rateUs") }}</h3>
-          <i id="rateStar1" class="fas fa-star"></i>
-          <i id="rateStar2" class="fas fa-star"></i>
-          <i id="rateStar3" class="fas fa-star"></i>
-          <i id="rateStar4" class="fas fa-star"></i>
-          <i id="rateStar5" class="fas fa-star"></i>
+          <div class="rate-and-comment-modal-stars">
+            <i id="rateStar1" class="fas fa-star" @click="rateUs(1)"></i>
+            <i id="rateStar2" class="fas fa-star" @click="rateUs(2)"></i>
+            <i id="rateStar3" class="fas fa-star" @click="rateUs(3)"></i>
+            <i id="rateStar4" class="fas fa-star" @click="rateUs(4)"></i>
+            <i id="rateStar5" class="fas fa-star" @click="rateUs(5)"></i>
+          </div>
         </div>
 
         <div>
@@ -84,12 +85,25 @@ export default {
   data() {
     return {
       newComment: "",
-      //currentWorkout = this.w
+      currentWorkoutId: ""
     };
   },
   methods: {
     openModal(name) {
       this.$modal.show(name);
+    },
+    loadModal(name) {
+      let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser != null) {
+        let workoutId = name.split("-")[1];
+        this.currentWorkoutId = workoutId;
+        let rating = currentUser.ratedWorkout.find(
+          elem => elem.id == workoutId
+        );
+        if (rating != null) {
+          this.rateUs(rating.rate);
+        }
+      }
     },
     addComment() {
       let currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -100,21 +114,97 @@ export default {
 
       let workouts = JSON.parse(localStorage.getItem("workouts"));
 
-      let oldComment = this.workout.comments[this.workout.comments.length - 1];
-      let newId = oldComment.id + 1;
+      let newId;
+      if (this.workout.comments.length > 0) {
+        let oldComment = this.workout.comments[
+          this.workout.comments.length - 1
+        ];
+        newId = oldComment.id + 1;
+      } else {
+        newId = 1;
+      }
+
       let newComment = {
         id: newId,
         user: currentUser.username,
-        text: this.newComment,
+        text: this.newComment
       };
 
+      //let currentWorkout =
       this.workout.comments.push(newComment);
       workouts[this.workout.id - 1].comments.push(newComment);
       localStorage.setItem("workouts", JSON.stringify(workouts));
 
       this.newComment = "";
     },
-  },
+
+    rateUs(stars) {
+      let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser == null) {
+        console.log("Not logged in");
+        return;
+      }
+
+      let starsName = [
+        "rateStar1",
+        "rateStar2",
+        "rateStar3",
+        "rateStar4",
+        "rateStar5"
+      ];
+      for (let i = 0; i < stars; i++) {
+        let star = document.querySelector(`#${starsName[i]}`);
+        star.classList.add("rate-and-comment-modal-stars-selected");
+      }
+      for (let i = stars; i < 5; i++) {
+        let star = document.querySelector(`#${starsName[i]}`);
+        star.classList.remove("rate-and-comment-modal-stars-selected");
+      }
+
+      let users = JSON.parse(localStorage.getItem("users"));
+      let workouts = JSON.parse(localStorage.getItem("workouts"));
+      let newRate = this.workout.rate * this.workout.timesRated + stars;
+
+      //Check if I already rated this one -> just change the rating or just add
+      let rating = currentUser.ratedWorkout.find(
+        elem => elem.id == this.currentWorkoutId
+      );
+      if (rating != null) {
+        //Already rated -> just change
+        newRate -= rating.rate;
+        let index = this.findIndex(currentUser.ratedWorkout, rating);
+        currentUser.ratedWorkout[index] = { id: rating.id, rate: stars };
+      } else {
+        //Never rated before
+        this.workout.timesRated++;
+        workouts[this.workout.id - 1].timesRated++;
+        currentUser.ratedWorkout.push({ id: this.workout.id, rate: stars });
+      }
+      newRate =
+        Math.round((newRate / this.workout.timesRated + Number.EPSILON) * 100) /
+        100;
+      this.workout.rate = newRate;
+      workouts[this.workout.id - 1].rate = newRate;
+      users[currentUser.id - 1] = currentUser;
+
+      console.log(users);
+
+      localStorage.setItem("users", JSON.stringify(users));
+      localStorage.setItem("workouts", JSON.stringify(workouts));
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    },
+
+    findIndex(array, ratedWorkoutElem) {
+      let i = 0;
+      while (true) {
+        if (array[i].id == ratedWorkoutElem.id) {
+          break;
+        }
+        i++;
+      }
+      return i;
+    }
+  }
 };
 </script>
 
@@ -188,7 +278,7 @@ export default {
   border-radius: 5px;
   cursor: pointer;
 }
-
+/*Modal-------------------*/
 .rate-and-comment-modal {
   display: flex;
   flex-direction: column;
@@ -199,11 +289,10 @@ export default {
   font-weight: 600;
 }
 
-.rate-and-comment-modal i,
-add-comment-modal i {
+.rate-and-comment-modal i {
   cursor: pointer;
 }
-
+/*X*/
 #close-rateAndCommentModal {
   align-self: flex-end;
   color: var(--var-navy);
@@ -211,10 +300,38 @@ add-comment-modal i {
   font-weight: bold;
   padding: 1%;
 }
+
 #close-rateAndCommentModal:hover {
   color: var(--var-red);
 }
 
+/*Rate us*/
+.rate-and-comment-modal-stars {
+  margin: auto;
+  color: whitesmoke;
+  background: var(--var-navy);
+  width: 25%;
+  padding: 5px 0px;
+  border-radius: 10px;
+}
+
+.rate-and-comment-modal-stars-selected {
+  color: var(--var-yellow);
+}
+
+.rate-and-comment-modal-stars i {
+  margin: 2%;
+}
+
+.rate-and-comment-modal-stars:hover > i {
+  color: var(--var-yellow);
+}
+
+.rate-and-comment-modal-stars i:hover ~ i {
+  color: whitesmoke;
+}
+
+/*Comment part*/
 .rate-and-comment-modal-add-comment {
   display: flex;
   justify-content: center;
@@ -271,24 +388,6 @@ add-comment-modal i {
   color: var(--var-navy);
 }
 
-/*
-.add-comment-modal .workout-card-mdoal-button {
-  width: 25%;
-  align-self: center;
-  margin: 10%;
-  padding: 1%;
-  background: var(--var-navy);
-  color: var(--var-yellow);
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 1rem;
-}
-.add-comment-modal .workout-card-mdoal-button:hover {
-  color: var(--var-navy);
-  background: var(--var-yellow);
-}
-*/
 @media (max-width: 900px) {
   .workout-card-rateAndComment {
     font-size: 0.75rem;

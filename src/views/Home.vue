@@ -38,13 +38,13 @@ import WorkoutHomePage from "@/components/WorkoutHomePage.vue";
 export default {
   name: "Home",
   components: {
-    WorkoutHomePage,
+    WorkoutHomePage
   },
   data() {
     return {
       workouts: null,
       users: null,
-      bestWorkouts: [],
+      bestWorkouts: []
     };
   },
   created() {
@@ -56,13 +56,13 @@ export default {
       this.workouts = JSON.parse(localStorage.getItem("workouts"));
     }
     if (localStorage.getItem("users") == null) {
-      localStorage.setItem("users", JSON.stringify(this.users));
       this.users = user;
+      localStorage.setItem("users", JSON.stringify(this.users));
     } else {
       this.users = JSON.parse(localStorage.getItem("users"));
     }
     //Test
-    localStorage.setItem("currentUser", JSON.stringify(this.users[0]));
+    localStorage.setItem("currentUser", JSON.stringify(this.users[1]));
 
     this.workouts.sort(function(a, b) {
       return b.rate - a.rate;
@@ -75,7 +75,7 @@ export default {
   mounted() {
     //this.workouts = workout;
     //document.querySelector("#test-p").innerHTML = workout[0].description;
-  },
+  }
 };
 </script>
 
