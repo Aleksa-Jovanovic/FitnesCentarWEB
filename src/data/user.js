@@ -5,6 +5,8 @@ const user = [
     username: "miki96",
     password: "qwerty96",
     visitedWorkout: [],
+    ratedWorkout: [],
+    schedule: [],
   },
   {
     firstname: "tom",
@@ -12,5 +14,9 @@ const user = [
     username: "tommy",
     password: "tommy95",
     visitedWorkout: [],
+    ratedWorkout: [],
+    schedule: [],
   },
 ];
+
+export default user;

@@ -30,6 +30,12 @@
     "massageOffer": "MASSAGE"
   },
   "workout": {
+    "rateCommentModal": {
+      "rateUs": "Rate us:",
+      "comments": "Comments",
+      "comment": "Add a public comment...",
+      "user": "User: "
+    },
     "yoga": {
       "name": "",
       "description": ""

@@ -30,6 +30,12 @@
     "massageOffer": "MASAZA"
   },
   "workout": {
+    "rateCommentModal": {
+      "rateUs": "Oceni nas:",
+      "comments": "Komentari",
+      "comment": "Dodaj komentar...",
+      "user": "Korisnik: "
+    },
     "yoga": {
       "name": "",
       "description": ""

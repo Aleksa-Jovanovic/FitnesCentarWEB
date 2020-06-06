@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <h1>{{$t("home.name")}}</h1>
-    <div class="current-path">{{$t('home.path')}}</div>
+    <h1>{{ $t("home.name") }}</h1>
+    <div class="current-path">{{ $t("home.path") }}</div>
     <div class="home-pictures">
       <div class="home-picture">
         <img src="@/assets/img/home_gym.png" alt />
@@ -15,9 +15,9 @@
     </div>
 
     <div class="container">
-      <p>{{$t("home.intro")}}</p>
+      <p>{{ $t("home.intro") }}</p>
 
-      <h2>{{$t("home.bestWorkout")}}</h2>
+      <h2>{{ $t("home.bestWorkout") }}</h2>
       <div class="home-workouts">
         <WorkoutHomePage
           v-for="bestWorkout in bestWorkouts"
@@ -32,24 +32,42 @@
 <script>
 // @ is an alias to /src
 import workout from "@/data/workout.js";
+import user from "@/data/user.js";
 import WorkoutHomePage from "@/components/WorkoutHomePage.vue";
 
 export default {
   name: "Home",
   components: {
-    WorkoutHomePage
+    WorkoutHomePage,
   },
   data() {
     return {
       workouts: null,
-      bestWorkouts: []
+      users: null,
+      bestWorkouts: [],
     };
   },
   created() {
-    this.workouts = workout();
+    //Import u localStorage i export ako vec postoji!
+    if (localStorage.getItem("workouts") == null) {
+      this.workouts = workout();
+      localStorage.setItem("workouts", JSON.stringify(this.workouts));
+    } else {
+      this.workouts = JSON.parse(localStorage.getItem("workouts"));
+    }
+    if (localStorage.getItem("users") == null) {
+      localStorage.setItem("users", JSON.stringify(this.users));
+      this.users = user;
+    } else {
+      this.users = JSON.parse(localStorage.getItem("users"));
+    }
+    //Test
+    localStorage.setItem("currentUser", JSON.stringify(this.users[0]));
+
     this.workouts.sort(function(a, b) {
       return b.rate - a.rate;
     });
+    //Pusovanje najboljih workouta
     this.bestWorkouts.push(this.workouts[0]);
     this.bestWorkouts.push(this.workouts[1]);
     this.bestWorkouts.push(this.workouts[2]);
@@ -57,7 +75,7 @@ export default {
   mounted() {
     //this.workouts = workout;
     //document.querySelector("#test-p").innerHTML = workout[0].description;
-  }
+  },
 };
 </script>
 

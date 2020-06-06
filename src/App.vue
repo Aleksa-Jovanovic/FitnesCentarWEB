@@ -26,7 +26,11 @@ export default {
   name: "App",
   components: {
     Header,
-    Footer
-  }
+    Footer,
+  },
+  beforeCreate() {
+    //Da ocisti stare localStorage
+    //localStorage.clear();
+  },
 };
 </script>

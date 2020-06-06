@@ -122,6 +122,36 @@ function workout() {
           user: "admin",
           text: "Odlican trening",
         },
+        {
+          id: 3,
+          user: "admin",
+          text: "Odlican trening",
+        },
+        {
+          id: 4,
+          user: "admin",
+          text: "Odlican trening",
+        },
+        {
+          id: 5,
+          user: "admin",
+          text: "Odlican trening",
+        },
+        {
+          id: 6,
+          user: "admin",
+          text: "Odlican trening",
+        },
+        {
+          id: 7,
+          user: "admin",
+          text: "Odlican trening",
+        },
+        {
+          id: 8,
+          user: "admin",
+          text: "Odlican trening",
+        },
       ],
       imgs: ["core_butterfly_1.jpg", "core_butterfly_2.jpg"],
       videos: [],
