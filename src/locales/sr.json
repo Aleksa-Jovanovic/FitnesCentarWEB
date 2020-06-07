@@ -54,12 +54,18 @@
   },
   "workoutPage": {
     "name": "Trening",
-    "path": "Trening",
+    "path": "Usluge > Trening",
     "type": "Tip treninga",
+    "all": "Sve",
     "yoga": " Joga",
     "pilates": "Pilates",
     "core": "Stomak",
-    "cardio": "Kardio"
+    "cardio": "Kardio",
+    "schedule": "Zakazi trening",
+    "sort": "Sortiranje",
+    "byName": "Po imenu",
+    "byDuration": "Po trajanju",
+    "byLevel": "Po tezini"
   },
   "workout": {
     "rateCommentModal": {

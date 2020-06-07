@@ -54,12 +54,18 @@
   },
   "workoutPage": {
     "name": "Workout",
-    "path": "Workout",
+    "path": "Services > Workout",
     "type": "Workout type",
+    "all": "All",
     "yoga": " Yoga",
     "pilates": "Pilates",
     "core": "Core",
-    "cardio": "Cardio"
+    "cardio": "Cardio",
+    "schedule": "Schedule workout",
+    "sort": "Sort",
+    "byName": "By name",
+    "byDuration": "By duration",
+    "byLevel": "By intensity"
   },
   "workout": {
     "rateCommentModal": {

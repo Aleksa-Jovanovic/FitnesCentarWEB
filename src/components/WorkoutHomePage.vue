@@ -230,6 +230,7 @@ export default {
 .workout-home-page-text {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 60%;
   background: var(--var-navy);
   padding: 2%;
@@ -373,6 +374,7 @@ export default {
 }
 .workout-modal-div-comment p {
   margin: 0px !important;
+  color: var(--var-navy);
   text-align: left;
   padding-left: 10px;
 }
