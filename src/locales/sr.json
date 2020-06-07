@@ -29,7 +29,29 @@
     "nutritionistOffer": "NUTRICIONISTA",
     "massageOffer": "MASAZA"
   },
-  "profile": {},
+  "profile": {
+    "name": "Profil",
+    "path": "Profil",
+    "firstName": "Ime: ",
+    "lastName": "Prezime: ",
+    "sex": "Pol: ",
+    "male": "Musko",
+    "female": "Zensko",
+    "id": "id",
+    "email": "Email",
+    "logOut": "Odjavi se",
+    "changeUsername": "Promeni ime",
+    "changePassword": "Promeni sifru",
+    "notLoggedIn": "Napravi nalog ili se uloguj!",
+    "logIn": "Uloguj se",
+    "makeAcc": "Prijavi se",
+    "username": "Korisnicko ime...",
+    "password": "Sifra...",
+    "wrongUsername": "Pogresno korisnicko ime!",
+    "wrongPassword": "Pogresna sifra!",
+    "firstNameSignUp": "Ime...",
+    "lastNameSignUp": "Prezime..."
+  },
   "workout": {
     "rateCommentModal": {
       "rateUs": "Oceni nas:",

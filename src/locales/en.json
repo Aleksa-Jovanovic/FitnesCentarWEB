@@ -31,7 +31,26 @@
   },
   "profile": {
     "name": "Profile",
-    "path": "Profile"
+    "path": "Profile",
+    "firstName": "First name: ",
+    "lastName": "Last name: ",
+    "sex": "Gender: ",
+    "male": "Male",
+    "female": "Female",
+    "id": "id",
+    "email": "Email",
+    "logOut": "Sign out",
+    "changeUsername": "Change username",
+    "changePassword": "Change password",
+    "notLoggedIn": "Make an account or login!",
+    "logIn": "Sign in",
+    "makeAcc": "Sign up",
+    "username": "Username...",
+    "password": "Password...",
+    "wrongUsername": "Wrong username!",
+    "wrongPassword": "Wrong password!",
+    "firstNameSignUp": "First name...",
+    "lastNameSignUp": "Last name..."
   },
   "workout": {
     "rateCommentModal": {
