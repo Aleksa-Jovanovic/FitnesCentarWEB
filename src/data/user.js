@@ -6,6 +6,7 @@ const user = [
     sex: "male",
     username: "miki96",
     password: "qwerty96",
+    email: "milos96@gmail.com",
     visitedWorkout: [],
     ratedWorkout: [],
     schedule: [],
@@ -18,6 +19,7 @@ const user = [
     sex: "male",
     username: "tommy",
     password: "tommy95",
+    email: "tom.95@gmail.com",
     visitedWorkout: [],
     ratedWorkout: [
       {

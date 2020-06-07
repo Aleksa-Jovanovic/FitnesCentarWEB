@@ -77,6 +77,18 @@
     "info1": "At the Bucerias Fitness Center, taking care of our members is our priority. Every day we try to offer personalized quality services through various training options that help optimize results in the gym.",
     "info2": "Our main goal is to offer our members an ideal gym for achieving well-being, a healthy lifestyle and a strong body through exercise."
   },
+  "schedule": {
+    "name": "Schedule",
+    "path": "Schedule",
+    "mobileNumber": "Phone number:",
+    "date": "Date :",
+    "info": "Description...",
+    "for": "Schedule for",
+    "nutrition": "Nutrition",
+    "massage": "Massage",
+    "disabledValue": "Please select one",
+    "submit": "Submit"
+  },
   "workout": {
     "rateCommentModal": {
       "rateUs": "Rate us:",

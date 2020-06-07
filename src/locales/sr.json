@@ -77,6 +77,18 @@
     "info1": "U fitnes centru Bucerias briga o nasim clanovima je nas prioritet. Svakog dana pokusavamo da ponudimo personalizovane kvalitetne usluge kroz razlicite opcije treninga koje pomazu u optimizaciji rezultata u teretani.",
     "info2": "Nas glavni cilj je ponuditi nasim clanovima idealnu teretanu za postizanje dobrobiti, zdravog nacina zivota i snaznog tela kroz vezbanje."
   },
+  "schedule": {
+    "name": "Zakazivanje",
+    "path": "Zakazivanje",
+    "mobileNumber": "Broj telefona:",
+    "date": "Datum :",
+    "info": "Opis... ",
+    "for": "Zakazivanje za",
+    "nutrition": "Nutricionistu",
+    "massage": "Masazu",
+    "disabledValue": "Izaberite vrednost",
+    "submit": "Potvrdi"
+  },
   "workout": {
     "rateCommentModal": {
       "rateUs": "Oceni nas:",
