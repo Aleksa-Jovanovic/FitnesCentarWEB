@@ -59,6 +59,7 @@
 
 .about-map {
   width: auto;
+  padding-top: 10px;
 }
 
 .about-text-holder {
