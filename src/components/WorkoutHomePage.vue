@@ -115,6 +115,10 @@ export default {
         return;
       }
 
+      if (!this.checkIfVisited()) {
+        return;
+      }
+
       let workouts = JSON.parse(localStorage.getItem("workouts"));
 
       let newId;
@@ -145,6 +149,10 @@ export default {
       let currentUser = JSON.parse(localStorage.getItem("currentUser"));
       if (currentUser == null) {
         console.log("Not logged in");
+        return;
+      }
+
+      if (!this.checkIfVisited()) {
         return;
       }
 
@@ -195,6 +203,16 @@ export default {
       localStorage.setItem("users", JSON.stringify(users));
       localStorage.setItem("workouts", JSON.stringify(workouts));
       localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    },
+    checkIfVisited() {
+      let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (
+        currentUser.visitedWorkout.find(elem => elem == this.workout.id) != null
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     },
 
     findIndex(array, ratedWorkoutElem) {
