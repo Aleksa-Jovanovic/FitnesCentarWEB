@@ -37,6 +37,11 @@ const routes = [
     name: "Profile",
     component: () => import("../views/Profile.vue"),
   },
+  {
+    path: "/service/training",
+    name: "Workout",
+    component: () => import("../views/Workout.vue"),
+  },
   //],
   //},
 ];

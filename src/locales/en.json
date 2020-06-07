@@ -52,6 +52,15 @@
     "firstNameSignUp": "First name...",
     "lastNameSignUp": "Last name..."
   },
+  "workoutPage": {
+    "name": "Workout",
+    "path": "Workout",
+    "type": "Workout type",
+    "yoga": " Yoga",
+    "pilates": "Pilates",
+    "core": "Core",
+    "cardio": "Cardio"
+  },
   "workout": {
     "rateCommentModal": {
       "rateUs": "Rate us:",

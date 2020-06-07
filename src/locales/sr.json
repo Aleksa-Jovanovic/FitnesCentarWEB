@@ -52,6 +52,15 @@
     "firstNameSignUp": "Ime...",
     "lastNameSignUp": "Prezime..."
   },
+  "workoutPage": {
+    "name": "Trening",
+    "path": "Trening",
+    "type": "Tip treninga",
+    "yoga": " Joga",
+    "pilates": "Pilates",
+    "core": "Stomak",
+    "cardio": "Kardio"
+  },
   "workout": {
     "rateCommentModal": {
       "rateUs": "Oceni nas:",
