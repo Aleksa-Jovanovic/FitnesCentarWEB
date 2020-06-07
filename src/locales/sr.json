@@ -89,6 +89,15 @@
     "disabledValue": "Izaberite vrednost",
     "submit": "Potvrdi"
   },
+  "workoutDetails": {
+    "name": "Detalji treninga",
+    "path": "Usluge > Trening > Detalji",
+    "gallery": "Galerija: ",
+    "videos": "Video klipovi: ",
+    "duration": "Trajanje: ",
+    "level": "Tezina: ",
+    "workoutName": "Trening: "
+  },
   "workout": {
     "rateCommentModal": {
       "rateUs": "Oceni nas:",

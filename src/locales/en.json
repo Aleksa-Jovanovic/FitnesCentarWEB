@@ -89,6 +89,15 @@
     "disabledValue": "Please select one",
     "submit": "Submit"
   },
+  "workoutDetails": {
+    "name": "Workout Details",
+    "path": "Services > Workout > Details",
+    "gallery": "Gallery: ",
+    "videos": "Videos: ",
+    "duration": "Duration: ",
+    "level": "Intensity: ",
+    "workoutName": "Workout: "
+  },
   "workout": {
     "rateCommentModal": {
       "rateUs": "Rate us:",
