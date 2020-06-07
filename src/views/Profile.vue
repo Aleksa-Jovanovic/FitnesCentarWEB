@@ -32,6 +32,23 @@
           <p @click="signOut()">{{$t('profile.logOut')}}</p>
         </div>
       </div>
+      <div class="profile-logged-in-data">
+        <h3>{{$t('profile.scheduled')}}</h3>
+
+        <div
+          v-for="scheduleWorkout in this.currentUser.schedule"
+          :key="scheduleWorkout.workout.id"
+          class="profile-logged-in-data-holder"
+        >
+          <div class="profile-logged-in-data-cards-holder">
+            <WorkoutHomePage :workout="scheduleWorkout.workout" />
+          </div>
+          <h4
+            @click="cancelSchedule(scheduleWorkout)"
+            class="profile-logged-in-data-cancel-holder"
+          >{{$t("profile.cancelScheduled")}}</h4>
+        </div>
+      </div>
     </div>
     <div class="profile-logged-out" v-else>
       <div class="profile-logged-out-intro">
@@ -72,8 +89,13 @@
 </template>
 
 <script>
+import WorkoutHomePage from "@/components/WorkoutHomePage.vue";
+
 export default {
   name: "Profile",
+  components: {
+    WorkoutHomePage
+  },
   data() {
     return {
       currentUser: null,
@@ -158,6 +180,29 @@ export default {
       this.username = this.password = this.email = this.firstname = this.lastname = this.sex =
         "";
     },
+    cancelSchedule(workout) {
+      let newScheduleArray = [];
+      for (let i = 0; i < this.currentUser.schedule.length; i++) {
+        if (workout.workout.id != this.currentUser.schedule[i].workout.id) {
+          newScheduleArray.push(this.currentUser.schedule[i]);
+        }
+      }
+
+      //Konfiguracija
+      this.currentUser.schedule = newScheduleArray;
+      localStorage.setItem("currentUser", JSON.stringify(this.currentUser));
+
+      let allUsers = JSON.parse(localStorage.getItem("users"));
+      let index = this.findIndex(allUsers, this.currentUser);
+      allUsers[index] = this.currentUser;
+      localStorage.setItem("users", JSON.stringify(allUsers));
+
+      //Konfiguracija workout-a
+      let allWorkouts = JSON.parse(localStorage.getItem("workouts"));
+      index = this.findIndex(allWorkouts, workout.workout);
+      allWorkouts[index].availableSpots[0]++;
+      localStorage.setItem("workouts", JSON.stringify(allWorkouts));
+    },
     setHidden() {
       document
         .querySelector(".profile-logged-out-login")
@@ -165,6 +210,16 @@ export default {
       document
         .querySelector(".profile-logged-out-register")
         .classList.add("hidden");
+    },
+    findIndex(array, elem) {
+      let i = 0;
+      while (true) {
+        if (array[i].id == elem.id) {
+          break;
+        }
+        i++;
+      }
+      return i;
     }
   }
 };
@@ -258,6 +313,43 @@ export default {
 .profile-logged-out-intro-buttons p:hover,
 .profile-logged-out-login p:hover,
 .profile-logged-out-register p:hover {
+  color: var(--var-yellow);
+  background: var(--var-red);
+}
+
+.profile-logged-in-data {
+  width: 100%;
+}
+.profile-logged-in-data h3 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+  padding: 10px;
+}
+
+.profile-logged-in-data-holder {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.profile-logged-in-data-cards-holder {
+  width: 80%;
+}
+
+.profile-logged-in-data-cancel-holder {
+  background: var(--var-yellow);
+  color: var(--var-red);
+  padding: 10px;
+  line-height: 1.8rem;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+.profile-logged-in-data-cancel-holder:hover {
   color: var(--var-yellow);
   background: var(--var-red);
 }
@@ -361,6 +453,13 @@ export default {
   .profile-logged-out-register p {
     font-size: 1.2rem;
     line-height: 1rem;
+  }
+  .profile-logged-in-data h3 {
+    font-size: 2rem;
+  }
+
+  .profile-logged-in-data-cancel-holder {
+    font-size: 2rem;
   }
 }
 </style>

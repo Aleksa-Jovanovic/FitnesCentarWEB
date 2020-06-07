@@ -50,7 +50,9 @@
     "wrongUsername": "Wrong username!",
     "wrongPassword": "Wrong password!",
     "firstNameSignUp": "First name...",
-    "lastNameSignUp": "Last name..."
+    "lastNameSignUp": "Last name...",
+    "scheduled": "Scheduled workout:",
+    "cancelScheduled": "Cancel workout"
   },
   "workoutPage": {
     "name": "Workout",

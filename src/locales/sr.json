@@ -50,7 +50,9 @@
     "wrongUsername": "Pogresno korisnicko ime!",
     "wrongPassword": "Pogresna sifra!",
     "firstNameSignUp": "Ime...",
-    "lastNameSignUp": "Prezime..."
+    "lastNameSignUp": "Prezime...",
+    "scheduled": "Zakazani treninzi:",
+    "cancelScheduled": "Otkazi trening"
   },
   "workoutPage": {
     "name": "Trening",

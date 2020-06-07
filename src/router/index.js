@@ -42,6 +42,11 @@ const routes = [
     name: "Workout",
     component: () => import("../views/Workout.vue"),
   },
+  {
+    path: "/service/training/trainingDetails/:id",
+    name: "WorkoutDetails",
+    component: () => import("../views/WorkoutDetails.vue"),
+  },
   //],
   //},
 ];

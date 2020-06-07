@@ -17,11 +17,14 @@
         <h4 @click="sort('level')">{{$t("workoutPage.byLevel")}}</h4>
       </div>
       <div class="workouts-main-content">
-        <div v-for="workout in workouts" :key="workout.id" class="workouts-main-content-cards">
+        <div v-for="workout in this.workouts" :key="workout.id" class="workouts-main-content-cards">
           <div class="workouts-main-cards-holder">
             <WorkoutHomePage :workout="workout" />
           </div>
-          <h4>{{$t("workoutPage.schedule")}}</h4>
+          <h4
+            @click="schedule(workout)"
+            v-if="workout.availableSpots[0]>0"
+          >{{$t("workoutPage.schedule")}}</h4>
         </div>
       </div>
     </div>
@@ -37,11 +40,14 @@ export default {
   },
   data() {
     return {
-      workouts: null
+      workouts: null,
+      pickTypeValue: "all",
+      sortType: ""
     };
   },
   methods: {
     pickType(type) {
+      this.pickTypeValue = type;
       this.workouts = JSON.parse(localStorage.getItem("workouts"));
       if (type == "all") {
         return;
@@ -55,6 +61,7 @@ export default {
       this.workouts = selectedWorkouts;
     },
     sort(sortType) {
+      this.sortType = sortType;
       switch (sortType) {
         case "name":
           this.workouts.sort(this.compare);
@@ -69,7 +76,61 @@ export default {
             return b.difficulty - a.difficulty;
           });
           break;
+        default:
+          break;
       }
+    },
+    schedule(scheduleWorkout) {
+      let currUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currUser != null) {
+        let exit = false;
+        for (let i = 0; i < currUser.schedule.length; i++) {
+          if (scheduleWorkout.id == currUser.schedule[i].workout.id) {
+            exit = true;
+            alert("Already scheduled!");
+            break;
+          }
+        }
+
+        if (exit) {
+          return;
+        }
+
+        scheduleWorkout.availableSpots[0]--;
+
+        this.workouts = JSON.parse(localStorage.getItem("workouts"));
+        let index = this.findIndex(this.workouts, scheduleWorkout);
+        this.workouts[index] = scheduleWorkout;
+        localStorage.setItem("workouts", JSON.stringify(this.workouts));
+
+        this.pickType(this.pickTypeValue);
+        this.sort(this.sortType);
+
+        //Sad ide deo sa korisnikom
+        currUser.schedule.push({
+          workout: scheduleWorkout,
+          date: ""
+        });
+        console.log(currUser);
+        localStorage.setItem("currentUser", JSON.stringify(currUser));
+
+        let allUsers = JSON.parse(localStorage.getItem("users"));
+        index = this.findIndex(allUsers, currUser);
+        allUsers[index] = currUser;
+        localStorage.setItem("users", JSON.stringify(allUsers));
+      } else {
+        alert("You are not logged in!");
+      }
+    },
+    findIndex(array, elem) {
+      let i = 0;
+      while (true) {
+        if (array[i].id == elem.id) {
+          break;
+        }
+        i++;
+      }
+      return i;
     },
     compare(a, b) {
       // Use toUpperCase() to ignore character casing
@@ -87,6 +148,8 @@ export default {
   },
   created() {
     this.workouts = JSON.parse(localStorage.getItem("workouts"));
+    this.pickTypeValue = "all";
+    this.sortType = "";
   }
 };
 </script>
@@ -138,6 +201,9 @@ export default {
   padding: 5px;
   margin-top: 20px;
   cursor: pointer;
+}
+.workouts-main-type h4:hover {
+  font-weight: bold;
 }
 
 /*Content*/

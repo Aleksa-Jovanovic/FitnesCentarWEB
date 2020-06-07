@@ -8,7 +8,10 @@
       <p>{{ workout.description }}</p>
 
       <div id="workout-home-page-text-bottom">
-        <router-link to="/" id="workout-home-page-details">
+        <router-link
+          :to="'/service/training/trainingDetails/'+workout.id"
+          id="workout-home-page-details"
+        >
           {{
           $t("home.goToWorkout")
           }}
@@ -288,6 +291,8 @@ export default {
 
 .rate-and-comment-modal h3 {
   font-weight: 600;
+  font-size: 2rem !important;
+  text-align: center !important;
 }
 
 .rate-and-comment-modal i {
